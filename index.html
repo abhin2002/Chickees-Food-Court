@@ -1,25 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Chickees Food Court - Menu</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- AOS CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-gradient: linear-gradient(to bottom right, #fdf3f0, #fffaf7);
+      --text-color: #333;
+      --header-bg: linear-gradient(135deg, #790511, #9d0208);
+      --footer-bg: #6a040f;
+      --accent-color: #f77f00;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-color);
+      overflow-x: hidden;
+      line-height: 1.6;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    /* Dark mode variables */
+    body.dark-mode {
+      --bg-gradient: linear-gradient(to bottom right, #121212, #1e1e1e);
+      --text-color: #ddd;
+      --header-bg: linear-gradient(135deg, #3b0a0a, #5a0d0d);
+      --footer-bg: #3b0a0a;
+      --accent-color: #f77f00;
+    }
+
+    /* Header */
+    header {
+      background: var(--header-bg);
+      color: #fff;
+      text-align: center;
+      padding: 1rem 1.5rem 3rem;
+      border-bottom-left-radius: 80px;
+      border-bottom-right-radius: 80px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      opacity: 0.85;
+      font-style: italic;
+    }
+
+    /* Theme toggle button */
+    #theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: none;
+      font-size: 1.8rem;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+
+    #theme-toggle:hover {
+      color: var(--accent-color);
+    }
+
+    /* Menu Section */
+    .menu {
+      padding: 4rem 1rem 3rem;
+      text-align: center;
+    }
+
+    .menu h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      position: relative;
+      display: inline-block;
+      color: var(--header-bg);
+    }
+
+    .menu h2::after {
+      content: '';
+      width: 60px;
+      height: 4px;
+      background: var(--accent-color);
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 10px;
+    }
+
+    /* Menu Gallery Grid */
+    .menu-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      padding: 0 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .menu-gallery img {
+      width: 100%;
+      border-radius: 24px;
+      transition: all 0.4s ease;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.12);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .menu-gallery img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.2);
+      filter: brightness(1.03);
+    }
+
+    /* Location Section */
+    .location {
+      padding: 4rem 1rem 3rem;
+      text-align: center;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .location h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--header-bg);
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .location h2::after {
+      content: '';
+      width: 60px;
+      height: 4px;
+      background: var(--accent-color);
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 10px;
+    }
+
+    .map-container {
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 30px 70px rgba(0,0,0,0.12);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--footer-bg);
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.95rem;
+      border-top-left-radius: 60px;
+      border-top-right-radius: 60px;
+      margin-top: 5rem;
+      letter-spacing: 0.5px;
+      transition: background 0.4s ease;
+    }
+
+    /* WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 6px 10px rgba(37, 211, 102, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      transition: background-color 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+      background-color: #1ebe57;
+    }
+
+    .whatsapp-float img {
+      width: 30px;
+      height: 30px;
+      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
+    }
+
+    /* Responsive Scaling */
+    @media (max-width: 992px) {
+      header h1 {
+        font-size: 2.8rem;
+      }
+
+      .menu h2,
+      .location h2 {
+        font-size: 2rem;
+      }
+
+      .menu-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        padding: 0 1rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 3rem 1rem 2rem;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      .menu {
+        padding: 2.5rem 1rem 2rem;
+      }
+
+      .menu h2,
+      .location h2 {
+        font-size: 1.6rem;
+      }
+
+      .menu-gallery {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+      }
+
+      footer {
+        font-size: 0.85rem;
+        padding: 1.5rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <header>
     <h1>Chickees Food Court</h1>
     <p>Kuttiady, Kozhikode</p>
+    <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
   </header>
 
   <main>
-    <section class="menu">
+    <section class="menu" data-aos="fade-up">
       <h2>Our Menu</h2>
       <div class="menu-gallery">
-        <img src="chickees-food-court-kuttyady-kozhikode-food-court-f7rg21m.avif" alt="Menu Page 1">
-        <img src="chickees-food-court-kuttyady-kozhikode-food-court-d7jckuy.avif" alt="Menu Page 2">
+        <img src="chickees-food-court-kuttyady-kozhikode-food-court-f7rg21m.avif" alt="Menu Page 1" />
+        <img src="chickees-food-court-kuttyady-kozhikode-food-court-d7jckuy.avif" alt="Menu Page 2" />
+      </div>
+    </section>
+
+    <section class="location" data-aos="zoom-in">
+      <h2>Find Us Here</h2>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3938.574202234264!2d75.60855521477592!3d11.634750291721668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7d70f5f7d8c3f%3A0x742b8a62f9d1c9c9!2sKuttiady%2C%20Kerala%20673806!5e0!3m2!1sen!2sin!4v1654194773101!5m2!1sen!2sin"
+          width="100%"
+          height="320"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Chickees Food Court Location"
+        ></iframe>
       </div>
     </section>
   </main>
@@ -27,5 +307,43 @@
   <footer>
     <p>&copy; 2025 Chickees Food Court. All rights reserved.</p>
   </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/918921013039" target="_blank" class="whatsapp-float" aria-label="Order on WhatsApp">
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+      alt="WhatsApp Icon"
+    />
+  </a>
+
+  <!-- AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: "ease-in-out",
+      once: true,
+    });
+  </script>
+
+  <!-- Light/Dark Mode Toggle Script -->
+  <script>
+    const toggleButton = document.getElementById("theme-toggle");
+    toggleButton.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+      } else {
+        localStorage.setItem("theme", "light");
+      }
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+      }
+    });
+  </script>
 </body>
 </html>
