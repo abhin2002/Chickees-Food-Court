@@ -1,4 +1,3 @@
-/* Google Fonts (Add in <head> if not already) */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap');
 
 /* Reset */
@@ -13,14 +12,15 @@ body {
   background: linear-gradient(to bottom right, #fdf3f0, #fffaf7);
   color: #333;
   overflow-x: hidden;
+  line-height: 1.6;
 }
 
 /* Header */
 header {
-  background: linear-gradient(135deg, #6a040f, #9d0208);
+  background: linear-gradient(135deg, #790511, #9d0208);
   color: #fff;
   text-align: center;
-  padding: 4rem 1rem 3rem;
+  padding: 1rem 1.5rem 3rem;
   border-bottom-left-radius: 80px;
   border-bottom-right-radius: 80px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
@@ -35,7 +35,7 @@ header h1 {
 }
 
 header p {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 300;
   opacity: 0.85;
   font-style: italic;
@@ -68,10 +68,10 @@ header p {
   border-radius: 10px;
 }
 
-/* Menu Gallery */
+/* Menu Gallery Grid */
 .menu-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2.5rem;
   padding: 0 2rem;
   max-width: 1200px;
@@ -107,17 +107,50 @@ footer {
   letter-spacing: 0.5px;
 }
 
-/* Responsive Design */
+/* Extra Responsive Scaling */
+@media (max-width: 992px) {
+  header h1 {
+    font-size: 2.8rem;
+  }
+
+  .menu h2 {
+    font-size: 2rem;
+  }
+
+  .menu-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    padding: 0 1rem;
+  }
+}
+
 @media (max-width: 600px) {
+  header {
+    padding: 3rem 1rem 2rem;
+  }
+
   header h1 {
     font-size: 2.2rem;
   }
 
+  header p {
+    font-size: 1rem;
+  }
+
+  .menu {
+    padding: 2.5rem 1rem 2rem;
+  }
+
   .menu h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .menu-gallery {
+    grid-template-columns: 1fr;
     padding: 0 1rem;
+  }
+
+  footer {
+    font-size: 0.85rem;
+    padding: 1.5rem;
   }
 }
