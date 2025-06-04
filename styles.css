@@ -1,4 +1,7 @@
-/* Base Reset */
+/* Google Fonts (Add in <head> if not already) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap');
+
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -7,92 +10,114 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to bottom right, #fff3f0, #ffe0dc);
-  color: #2d2d2d;
-  min-height: 100vh;
+  background: linear-gradient(to bottom right, #fdf3f0, #fffaf7);
+  color: #333;
+  overflow-x: hidden;
 }
 
 /* Header */
 header {
-  background: linear-gradient(120deg, #ff5e5e, #ff8b5e);
-  color: white;
+  background: linear-gradient(135deg, #6a040f, #9d0208);
+  color: #fff;
   text-align: center;
-  padding: 3rem 1rem 2rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
+  padding: 4rem 1rem 3rem;
+  border-bottom-left-radius: 80px;
+  border-bottom-right-radius: 80px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
 }
 
 header h1 {
-  font-size: 3rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
   font-weight: 700;
+  margin-bottom: 0.5rem;
   letter-spacing: 1px;
 }
 
 header p {
-  margin-top: 0.5rem;
-  font-size: 1.1rem;
-  opacity: 0.9;
+  font-size: 1.2rem;
+  font-weight: 300;
+  opacity: 0.85;
   font-style: italic;
 }
 
 /* Menu Section */
 .menu {
-  padding: 4rem 1.5rem 3rem;
+  padding: 4rem 1rem 3rem;
   text-align: center;
 }
 
 .menu h2 {
-  font-size: 2.2rem;
-  margin-bottom: 2rem;
-  color: #333;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
   position: relative;
   display: inline-block;
+  color: #6a040f;
 }
 
 .menu h2::after {
   content: '';
-  display: block;
-  width: 50%;
+  width: 60px;
   height: 4px;
-  background: #ff5e5e;
-  margin: 0.5rem auto 0;
-  border-radius: 2px;
+  background: #f77f00;
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
 }
 
-/* Gallery Container */
+/* Menu Gallery */
 .menu-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  max-width: 1100px;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 2.5rem;
+  padding: 0 2rem;
+  max-width: 1200px;
   margin: auto;
-  padding: 0 1rem;
 }
 
-/* Card Style Images */
 .menu-gallery img {
   width: 100%;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(255, 94, 94, 0.2);
+  border-radius: 24px;
+  transition: all 0.4s ease;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.12);
   backdrop-filter: blur(10px);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.05);
 }
 
 .menu-gallery img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 30px 60px rgba(255, 94, 94, 0.3);
+  transform: scale(1.04);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.2);
+  filter: brightness(1.03);
 }
 
 /* Footer */
 footer {
-  background: #ff5e5e;
-  color: white;
+  background: #6a040f;
+  color: #fff;
   text-align: center;
-  padding: 1.5rem;
-  font-size: 0.9rem;
-  margin-top: 3rem;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
+  padding: 2rem;
+  font-size: 0.95rem;
+  border-top-left-radius: 60px;
+  border-top-right-radius: 60px;
+  margin-top: 5rem;
+  letter-spacing: 0.5px;
 }
 
+/* Responsive Design */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2.2rem;
+  }
+
+  .menu h2 {
+    font-size: 1.8rem;
+  }
+
+  .menu-gallery {
+    padding: 0 1rem;
+  }
+}
