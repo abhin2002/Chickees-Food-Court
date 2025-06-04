@@ -192,32 +192,49 @@
       transition: background 0.4s ease;
     }
 
-    /* WhatsApp Floating Button */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      box-shadow: 0 6px 10px rgba(37, 211, 102, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      transition: background-color 0.3s ease;
-    }
+    /* Floating WhatsApp Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
 
-    .whatsapp-float:hover {
-      background-color: #1ebe57;
-    }
+.whatsapp-float img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
 
-    .whatsapp-float img {
-      width: 30px;
-      height: 30px;
-      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
-    }
+/* Always-visible tooltip label */
+.whatsapp-tooltip {
+  margin-left: 12px;
+  background: #25D366;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+}
+
+.whatsapp-float:hover img {
+  transform: scale(1.1);
+}
+
+.whatsapp-float:hover .whatsapp-tooltip {
+  background: #1ebe5d;
+}
+
+
 
     /* Responsive Scaling */
     @media (max-width: 992px) {
@@ -308,13 +325,15 @@
     <p>&copy; 2025 Chickees Food Court. All rights reserved.</p>
   </footer>
 
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/918921013039" target="_blank" class="whatsapp-float" aria-label="Order on WhatsApp">
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-      alt="WhatsApp Icon"
-    />
-  </a>
+<!-- Floating WhatsApp Button with Always-Visible Tooltip -->
+<a href="https://wa.me/918921013039?text=Hi!%20I%20am%20interested%20in%20your%20software%20and%20AI/ML%20solutions." 
+   class="whatsapp-float" 
+   target="_blank">
+  <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
+  <span class="whatsapp-tooltip">Need a website or app?</span>
+</a>
+
+
 
   <!-- AOS JS -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
