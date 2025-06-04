@@ -1,4 +1,4 @@
-/* Reset and Base */
+/* Base Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,91 +6,92 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  background: #fffaf4;
-  color: #333;
-  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom right, #fff3f0, #ffe0dc);
+  color: #2d2d2d;
+  min-height: 100vh;
 }
 
 /* Header */
 header {
-  background: linear-gradient(to right, #f05454, #d94343);
+  background: linear-gradient(120deg, #ff5e5e, #ff8b5e);
   color: white;
-  padding: 2rem 1rem;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 3rem 1rem 2rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
 }
 
 header h1 {
-  font-size: 2.8rem;
-  margin-bottom: 0.5rem;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 header p {
+  margin-top: 0.5rem;
   font-size: 1.1rem;
+  opacity: 0.9;
   font-style: italic;
 }
 
 /* Menu Section */
 .menu {
-  padding: 3rem 1rem;
+  padding: 4rem 1.5rem 3rem;
   text-align: center;
 }
 
 .menu h2 {
   font-size: 2.2rem;
   margin-bottom: 2rem;
-  color: #222;
+  color: #333;
+  position: relative;
+  display: inline-block;
 }
 
-/* Gallery Grid */
+.menu h2::after {
+  content: '';
+  display: block;
+  width: 50%;
+  height: 4px;
+  background: #ff5e5e;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* Gallery Container */
 .menu-gallery {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
-  justify-content: center;
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 1rem;
 }
 
+/* Card Style Images */
 .menu-gallery img {
   width: 100%;
-  max-width: 500px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(255, 94, 94, 0.2);
+  backdrop-filter: blur(10px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .menu-gallery img:hover {
   transform: scale(1.03);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  box-shadow: 0 30px 60px rgba(255, 94, 94, 0.3);
 }
 
 /* Footer */
 footer {
-  background: #f05454;
+  background: #ff5e5e;
   color: white;
   text-align: center;
-  padding: 1.2rem;
+  padding: 1.5rem;
   font-size: 0.9rem;
-  margin-top: 4rem;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 2rem;
-  }
-
-  .menu h2 {
-    font-size: 1.5rem;
-  }
-
-  .menu-gallery {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .menu-gallery img {
-    max-width: 90%;
-  }
+  margin-top: 3rem;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 }
