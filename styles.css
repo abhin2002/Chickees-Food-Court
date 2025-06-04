@@ -1,62 +1,96 @@
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+/* Reset and Base */
+* {
   margin: 0;
-  background: #fffaf4;
-  color: #333;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background: #fffaf4;
+  color: #333;
+  padding: 0;
+}
+
+/* Header */
 header {
-  background-color: #f05454;
+  background: linear-gradient(to right, #f05454, #d94343);
   color: white;
-  padding: 1rem;
+  padding: 2rem 1rem;
   text-align: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 header h1 {
-  margin: 0;
-  font-size: 2.5rem;
+  font-size: 2.8rem;
+  margin-bottom: 0.5rem;
 }
 
 header p {
-  margin: 0.5rem 0 0;
+  font-size: 1.1rem;
   font-style: italic;
 }
 
+/* Menu Section */
 .menu {
-  padding: 2rem;
+  padding: 3rem 1rem;
   text-align: center;
 }
 
 .menu h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  color: #222;
 }
 
+/* Gallery Grid */
 .menu-gallery {
   display: flex;
   flex-wrap: wrap;
+  gap: 2rem;
   justify-content: center;
-  gap: 1rem;
 }
 
 .menu-gallery img {
-  max-width: 100%;
-  height: auto;
-  border: 2px solid #f05454;
-  border-radius: 8px;
-  width: 90%;
+  width: 100%;
   max-width: 500px;
-  transition: transform 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .menu-gallery img:hover {
-  transform: scale(1.02);
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
+/* Footer */
 footer {
-  background-color: #f05454;
+  background: #f05454;
   color: white;
   text-align: center;
-  padding: 1rem;
-  margin-top: 2rem;
+  padding: 1.2rem;
+  font-size: 0.9rem;
+  margin-top: 4rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .menu h2 {
+    font-size: 1.5rem;
+  }
+
+  .menu-gallery {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu-gallery img {
+    max-width: 90%;
+  }
 }
